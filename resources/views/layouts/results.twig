@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+<h1>Results</h1>
+
+<p>You matched with <!-- NUMBER OF COMPANIES MATCHED --> </p>
+
+<div class="matches">
+    {% for company in matchedCompanies %}
+        <div class="matches__match">
+            <h3>{{ company.getName() }}</h3>
+            <p>{{ company.getPostcode() }}</p>
+            <a href="#" onclick="show()"  class="matches__match__more">more</a>
+
+            <div   class="match__match__details" style="display:none">
+                <p><strong>Email:</strong> {{ company.getName() }}</p>
+                <p><strong>Phone:</strong> {{ company.getPostcode() }}</p>
+                <p><strong>Website:</strong> {{ company.getType() }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    function show() {
+    document.getElementsByClassName("match__match__details")[0].style.display = "block";
+
+
+    }
+</script>
+
+
+</body>
+</html>

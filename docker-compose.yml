@@ -1,0 +1,37 @@
+version: "3"
+
+networks:
+    move:
+
+
+services:
+
+  move:
+    container_name: move
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "9098:9098"
+    environment:
+      - APP_ENV=development
+    networks:
+      - move
+    expose:
+      - '9098'
+
+  move_mysql:
+    container_name: move_mysql
+    image: mariadb
+
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: project
+    networks:
+      - move
+    expose:
+      - '3306'
